@@ -4023,6 +4023,8 @@ function generateHTML() {
 		const PRESET_DOMAINS = [
 		    'proxy.xxxxxxxx.tk:50001',
 			'proxyip.cmliussss.net',
+            'ProxyIP.HK.CMLiussss.net',
+            'ProxyIP.SG.CMLiussss.net',			
             'ProxyIP.JP.CMLiussss.net',
 			'ProxyIP.Oracle.cmliussss.net',  
 			'ProxyIP.Multacom.CMLiussss.net', 
@@ -4037,6 +4039,7 @@ function generateHTML() {
 			'proxyip.aliyun.hw.090227.xyz',
 			'proxyip.vultr.fxxk.dedyn.io',
 			'proxyip.digitalocean.hw.090227.xyz',
+			'proxy.xinyitang.dpdns.org',
 			'proxyip.fxxk.dedyn.io'
 		];
 
