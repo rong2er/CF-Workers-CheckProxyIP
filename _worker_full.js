@@ -332,7 +332,7 @@ function generateHTML() {
 		.page-shell {
 			position: relative;
 			min-height: 100vh;
-			padding: 32px 24px 40px;
+			padding: 12px 24px 40px;
 		}
 
 		.ambient {
@@ -392,57 +392,17 @@ function generateHTML() {
 		}
 
 		.brand-chip {
-			display: inline-flex;
-			align-items: center;
-			justify-content: space-between;
-			gap: 14px;
-			align-self: flex-start;
-			padding: 8px 10px 8px 14px;
-			border-radius: 999px;
-			border: 1px solid rgba(97, 219, 255, 0.16);
-			background: rgba(12, 26, 43, 0.66);
-			color: #bfeeff;
-			font-size: 0.78rem;
-			letter-spacing: 0.08em;
-			text-transform: uppercase;
-			backdrop-filter: blur(12px);
-		}
-
-		.brand-chip-text {
-			display: inline-flex;
-			align-items: center;
-			gap: 10px;
-			min-width: 0;
-		}
-
-		.brand-dot {
-			width: 8px;
-			height: 8px;
-			border-radius: 50%;
-			background: linear-gradient(135deg, var(--accent), var(--accent-strong));
-			box-shadow: 0 0 18px rgba(97, 219, 255, 0.7);
-		}
-
-		.brand-title {
-			font-family: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
-			font-size: clamp(1.7rem, 4vw, 2.75rem);
-			font-weight: 700;
-			line-height: 0.98;
-			letter-spacing: -0.04em;
-			text-transform: uppercase;
-			color: #f7fbff;
-			text-wrap: balance;
+			display: none;
 		}
 
 		.header-note {
-			max-width: 420px;
-			color: var(--muted);
-			line-height: 1.7;
-			text-align: right;
-			flex: 0 1 420px;
+			display: none;
 		}
 
 		.theme-toggle {
+			position: fixed;
+			top: 12px;
+			right: 12px;
 			display: inline-flex;
 			align-items: center;
 			justify-content: center;
@@ -456,6 +416,7 @@ function generateHTML() {
 			cursor: pointer;
 			min-width: 0;
 			transition: color 0.28s ease;
+			z-index: 9999;
 		}
 
 		.theme-toggle:hover {
@@ -554,14 +515,7 @@ function generateHTML() {
 		}
 
 		.section-kicker {
-			display: inline-flex;
-			align-items: center;
-			gap: 10px;
-			margin: 0 0 18px;
-			font-size: 0.82rem;
-			letter-spacing: 0.14em;
-			text-transform: uppercase;
-			color: #9feaff;
+			display: none;
 		}
 
 		.section-kicker::before {
@@ -597,7 +551,7 @@ function generateHTML() {
 		}
 
 		.control-panel {
-			padding: 30px;
+			padding: 16px 30px 30px;
 			display: flex;
 			flex-direction: column;
 			min-height: 100%;
@@ -608,8 +562,8 @@ function generateHTML() {
 		.panel-header,
 		.results-header {
 			display: flex;
-			justify-content: space-between;
-			align-items: flex-start;
+			justify-content: flex-start;
+			align-items: baseline;
 			gap: 20px;
 		}
 
@@ -629,17 +583,11 @@ function generateHTML() {
 		}
 
 		.panel-badge {
-			padding: 10px 14px;
-			border-radius: 999px;
-			background: rgba(97, 219, 255, 0.08);
-			border: 1px solid rgba(97, 219, 255, 0.16);
-			color: #c6f5ff;
-			font-size: 0.82rem;
-			white-space: nowrap;
+			display: none;
 		}
 
 		.input-zone {
-			margin-top: 24px;
+			margin-top: 8px;
 		}
 
 		.field-label {
@@ -652,6 +600,9 @@ function generateHTML() {
 
 		.input-wrapper {
 			position: relative;
+			flex: 1;
+			display: flex;
+			flex-direction: column;
 		}
 
 		.input-control {
@@ -677,8 +628,11 @@ function generateHTML() {
 		}
 
 		textarea.input-control {
-			min-height: 329px;
-			resize: vertical;
+			flex: 1;
+			height: 100%;
+			min-height: 200px;
+			resize: none;
+			padding: 20px;
 			padding-right: 20px;
 			line-height: 1.75;
 		}
@@ -691,8 +645,7 @@ function generateHTML() {
 		.history-toggle {
 			position: absolute;
 			right: 16px;
-			top: 50%;
-			transform: translateY(-50%);
+			top: 14px;
 			display: inline-flex;
 			align-items: center;
 			justify-content: center;
@@ -703,7 +656,7 @@ function generateHTML() {
 			background: rgba(255, 255, 255, 0.03);
 			color: #b1c7db;
 			cursor: pointer;
-			transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+			transition: background 0.2s ease, color 0.2s ease;
 		}
 
 		.history-toggle:hover {
@@ -1135,12 +1088,14 @@ function generateHTML() {
 		.input-zone-header {
 			display: flex;
 			justify-content: space-between;
-			align-items: flex-end;
+			align-items: center;
 			margin-bottom: 12px;
 		}
 		
 		.input-zone-header .field-label {
 			margin-bottom: 0;
+			font-size: 1.35rem;
+			font-weight: 700;
 		}
 
 		.clear-btn {
@@ -1218,6 +1173,7 @@ function generateHTML() {
 			display: none;
 			flex: 1;
 			min-width: 0;
+			align-self: stretch;
 		}
 
 		.input-body.is-open .preset-col {
@@ -2441,6 +2397,119 @@ function generateHTML() {
 				padding: 14px;
 			}
 		}
+		.proxy-search-shell {
+			margin-top: 0;
+			margin-bottom: 24px;
+			padding: 28px;
+			position: relative;
+			overflow: hidden;
+			z-index: 10;
+		}
+
+		.proxy-search-shell::before {
+			content: '';
+			position: absolute;
+			inset: 0;
+			background:
+				radial-gradient(circle at top right, rgba(251, 191, 36, 0.12), transparent 30%),
+				radial-gradient(circle at bottom left, rgba(97, 219, 255, 0.12), transparent 28%);
+			pointer-events: none;
+		}
+
+		.proxy-search-header,
+		.proxy-search-form {
+			position: relative;
+			z-index: 1;
+		}
+
+		.proxy-search-header {
+			display: flex;
+			align-items: center;
+			gap: 0;
+			flex-wrap: wrap;
+			margin-bottom: 0;
+		}
+
+		.proxy-search-form {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			justify-content: center;
+			gap: 16px;
+			margin-top: 18px;
+		}
+
+		.proxy-search-field {
+			flex: 1 1 180px;
+			min-width: 0;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+
+		.proxy-search-custom-field {
+			flex: 0 1 170px;
+		}
+
+		.proxy-search-control {
+			min-height: 58px;
+			padding: 0 48px 0 18px;
+			border-radius: 18px;
+		}
+
+		select.proxy-search-control {
+			appearance: none;
+			background-image:
+				linear-gradient(45deg, transparent 50%, currentColor 50%),
+				linear-gradient(135deg, currentColor 50%, transparent 50%);
+			background-position:
+				calc(100% - 23px) 50%,
+				calc(100% - 17px) 50%;
+			background-size: 6px 6px, 6px 6px;
+			background-repeat: no-repeat;
+			color: var(--text);
+		}
+
+		.proxy-search-input {
+			padding-right: 18px;
+			text-transform: uppercase;
+		}
+
+		.proxy-search-input:disabled {
+			cursor: not-allowed;
+			opacity: 0.72;
+			color: var(--text-soft);
+		}
+
+		.proxy-search-btn {
+			flex: 0 0 160px;
+			min-height: 58px;
+			border-radius: 18px;
+			font-size: 1rem;
+		}
+
+		html[data-theme='light'] .proxy-search-shell::before {
+			background:
+				radial-gradient(circle at top right, rgba(245, 158, 11, 0.08), transparent 30%),
+				radial-gradient(circle at bottom left, rgba(14, 165, 233, 0.08), transparent 28%);
+		}
+
+		@media (max-width: 720px) {
+			.proxy-search-header {
+				flex-direction: column;
+				align-items: stretch;
+				gap: 8px;
+			}
+			.proxy-search-shell {
+				padding: 22px;
+			}
+		}
+
+		@media (max-width: 560px) {
+			.proxy-search-btn {
+				flex-basis: 100%;
+			}
+		}
 	</style>
 </head>
 <body>
@@ -2449,48 +2518,81 @@ function generateHTML() {
 		<div class="ambient ambient-two"></div>
 
 		<header class="site-header">
-			<div class="brand">
-				<div class="brand-title">Check ProxyIP</div>
-				<div class="brand-chip">
-					<span class="brand-chip-text">
-						<span class="brand-dot"></span>
-						<span>Cloudflare Workers Toolkit</span>
-					</span>
-					<button class="theme-toggle" type="button" id="themeToggle" aria-label="切换日间和夜间模式" title="切换日间和夜间模式">
-						<span class="theme-toggle-switch" aria-hidden="true">
-							<svg class="theme-toggle-icon theme-toggle-icon-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-								<circle cx="12" cy="12" r="4"></circle>
-								<path d="M12 2v2"></path>
-								<path d="M12 20v2"></path>
-								<path d="m4.93 4.93 1.41 1.41"></path>
-								<path d="m17.66 17.66 1.41 1.41"></path>
-								<path d="M2 12h2"></path>
-								<path d="M20 12h2"></path>
-								<path d="m6.34 17.66-1.41 1.41"></path>
-								<path d="m19.07 4.93-1.41 1.41"></path>
-							</svg>
-							<span class="theme-toggle-thumb"></span>
-							<svg class="theme-toggle-icon theme-toggle-icon-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-								<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9z"></path>
-							</svg>
-						</span>
-					</button>
-				</div>
-			</div>
-			<div class="header-note">基于 Cloudflare 的 ProxyIP 检测工具，支持单个或批量目标解析、可用性验证与出口信息查看。</div>
+			<button class="theme-toggle" type="button" id="themeToggle" aria-label="切换日间和夜间模式" title="切换日间和夜间模式">
+				<span class="theme-toggle-switch" aria-hidden="true">
+					<svg class="theme-toggle-icon theme-toggle-icon-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<circle cx="12" cy="12" r="4"></circle>
+						<path d="M12 2v2"></path>
+						<path d="M12 20v2"></path>
+						<path d="m4.93 4.93 1.41 1.41"></path>
+						<path d="m17.66 17.66 1.41 1.41"></path>
+						<path d="M2 12h2"></path>
+						<path d="M20 12h2"></path>
+						<path d="m6.34 17.66-1.41 1.41"></path>
+						<path d="m19.07 4.93-1.41 1.41"></path>
+					</svg>
+					<span class="theme-toggle-thumb"></span>
+					<svg class="theme-toggle-icon theme-toggle-icon-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9z"></path>
+					</svg>
+				</span>
+			</button>
 		</header>
 
 		<main class="site-main">
+			<section class="surface-card proxy-search-shell">
+				<div class="proxy-search-header">
+					<h2 class="results-title" style="white-space:nowrap;">获取更多 ProxyIP</h2>
+					<div style="flex:1; display:flex; justify-content:center; padding: 0 20px;">
+						<p class="results-subtitle" style="margin:0;">按端口和地区从网络测绘数据库中发现候选 ProxyIP，方便继续放回本工具检测可用性。</p>
+					</div>
+				</div>
+
+				<div class="proxy-search-form">
+					<label class="proxy-search-field" for="proxyRegionSelect">
+						<span class="field-label">地区:</span>
+						<select class="input-control proxy-search-control" id="proxyRegionSelect">
+							<option value="custom">✍️ 自定义地区</option>
+							<optgroup label="🌏 亚洲 / AS">
+								<option value="HK" selected>🇭🇰 香港</option>
+								<option value="TW">🇨🇳 台湾</option>
+								<option value="KR">🇰🇷 韩国</option>
+								<option value="JP">🇯🇵 日本</option>
+								<option value="SG">🇸🇬 新加坡</option>
+								<option value="IN">🇮🇳 印度</option>
+							</optgroup>
+							<optgroup label="🌎 北美 / NA">
+								<option value="US">🇺🇸 美国</option>
+								<option value="CA">🇨🇦 加拿大</option>
+							</optgroup>
+							<optgroup label="🌍 欧洲 / EU">
+								<option value="GB">🇬🇧 英国</option>
+								<option value="DE">🇩🇪 德国</option>
+								<option value="FR">🇫🇷 法国</option>
+							</optgroup>
+							<optgroup label="🌏 大洋洲 / OC">
+								<option value="AU">🇦🇺 澳大利亚</option>
+							</optgroup>
+						</select>
+					</label>
+
+					<label class="proxy-search-field proxy-search-custom-field" for="customRegionInput" id="customRegionField">
+						<span class="field-label">国家代码:</span>
+						<input class="input-control proxy-search-control proxy-search-input" type="text" id="customRegionInput" maxlength="2" pattern="[A-Za-z]{2}" placeholder="US" autocomplete="off" inputmode="text">
+					</label>
+
+					<label class="proxy-search-field" for="proxyPortSelect">
+						<span class="field-label">端口:</span>
+						<select class="input-control proxy-search-control" id="proxyPortSelect">
+							<option value="443">443</option>
+							<option value="nonstandard">非标</option>
+						</select>
+					</label>
+					<button class="primary-btn proxy-search-btn" id="fofaBtn" type="button">FOFA</button>
+				</div>
+			</section>
 			<section class="workspace-grid">
 				<div class="surface-card control-panel">
-					<div class="panel-header">
-						<div>
-							<p class="section-kicker">Workspace</p>
-							<h2 class="panel-title">开始检测</h2>
-							<p class="panel-copy">输入单个 IP、IPv6、域名或一整段列表。单条模式支持历史记录，批量模式适合直接粘贴多行目标。</p>
-						</div>
-						<div class="panel-badge">实时解析与验证</div>
-					</div>
 
 					<div class="input-zone">
 						<div class="input-zone-header">
@@ -2508,16 +2610,8 @@ function generateHTML() {
 						<div class="input-body" id="inputBody">
 							<div class="input-col">
 								<div class="input-wrapper" id="inputContainer">
-									<input class="input-control" type="text" id="inputList" placeholder="例如：ProxyIP.CMLiussss.net 或 8.223.63.150:443">
-									<button class="history-toggle" type="button" id="historyBtn" aria-label="查看历史记录">
-										<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-											<circle cx="12" cy="12" r="10"></circle>
-											<polyline points="12 6 12 12 16 14"></polyline>
-										</svg>
-									</button>
-									<div class="history-dropdown" id="historyDropdown"></div>
+									<textarea class="input-control" id="inputList" placeholder="例如：ProxyIP.CMLiussss.net 或 8.223.63.150:443"></textarea>
 								</div>
-								<p class="field-hint" id="fieldHint">单条模式支持历史快速回填，按 Enter 可以直接开始检测。</p>
 							</div>
 
 							<div class="preset-col" id="presetCol">
@@ -2526,7 +2620,6 @@ function generateHTML() {
 										<label class="preset-check-all">
 											<input type="checkbox" id="presetSelectAll"> <span>全选</span>
 										</label>
-										<button class="preset-apply-btn" type="button" id="presetApplyBtn">追加到输入框</button>
 									</div>
 									<div class="preset-list" id="presetList"></div>
 								</div>
@@ -2725,8 +2818,6 @@ function generateHTML() {
 		const progressBar = document.getElementById('progressBar');
 		const progressText = document.getElementById('progressText');
 		const globalMap = document.getElementById('global-map');
-		const historyBtn = document.getElementById('historyBtn');
-		const historyDropdown = document.getElementById('historyDropdown');
 		const fieldHint = document.getElementById('fieldHint');
 		const modeLabel = document.getElementById('modeLabel');
 		const summaryHeadline = document.getElementById('summaryHeadline');
@@ -3097,7 +3188,7 @@ function generateHTML() {
 			modeLabel.innerText = isBatch ? 'Batch / 多目标' : 'Single / 单目标';
 			fieldHint.innerText = isBatch
 				? '批量模式下每行一个目标，按 Ctrl + Enter 直接开始检测。'
-				: '单条模式支持历史快速回填，按 Enter 可以直接开始检测。';
+				: '单条模式下按 Enter 可以直接开始检测。';
 		}
 
 		function showEmptyState(title, description) {
@@ -3180,58 +3271,6 @@ function generateHTML() {
 			renderDashboard();
 		}
 
-		function getHistory() {
-			try {
-				const parsed = JSON.parse(localStorage.getItem('cf_proxy_history') || '[]');
-				return Array.isArray(parsed) ? parsed : [];
-			} catch {
-				return [];
-			}
-		}
-
-		function saveHistory(value) {
-			if (!value || value.includes('\\n')) return;
-			let history = getHistory();
-			history = history.filter(function (item) {
-				return item !== value;
-			});
-			history.unshift(value);
-			history = history.slice(0, 10);
-			localStorage.setItem('cf_proxy_history', JSON.stringify(history));
-			renderHistory();
-		}
-
-		function selectHistory(value) {
-			inputList.value = value;
-			historyDropdown.style.display = 'none';
-			inputList.focus();
-		}
-
-		function renderHistory() {
-			const history = getHistory();
-			historyDropdown.innerHTML = '';
-
-			if (!history.length) {
-				const emptyItem = document.createElement('button');
-				emptyItem.type = 'button';
-				emptyItem.className = 'history-item is-empty';
-				emptyItem.innerText = '暂无历史记录';
-				historyDropdown.appendChild(emptyItem);
-				return;
-			}
-
-			history.forEach(function (item) {
-				const button = document.createElement('button');
-				button.type = 'button';
-				button.className = 'history-item';
-				button.innerText = item;
-				button.addEventListener('click', function () {
-					selectHistory(item);
-				});
-				historyDropdown.appendChild(button);
-			});
-		}
-
 		function createInputControl(isBatch, value) {
 			let control;
 
@@ -3258,13 +3297,7 @@ function generateHTML() {
 			inputContainer.innerHTML = '';
 			inputContainer.appendChild(nextControl);
 
-			if (!isBatch) {
-				inputContainer.appendChild(historyBtn);
-				inputContainer.appendChild(historyDropdown);
-			}
-
 			inputList = nextControl;
-			historyDropdown.style.display = 'none';
 			setModeVisuals(isBatch);
 			bindInputShortcut();
 		}
@@ -3912,18 +3945,6 @@ function generateHTML() {
 			swapInputMode(batchMode.checked);
 		});
 
-		historyBtn.addEventListener('click', function (event) {
-			event.stopPropagation();
-			const isVisible = historyDropdown.style.display === 'block';
-			historyDropdown.style.display = isVisible ? 'none' : 'block';
-		});
-
-		document.addEventListener('click', function (event) {
-			if (!inputContainer.contains(event.target)) {
-				historyDropdown.style.display = 'none';
-			}
-		});
-
 		if (themeToggle) {
 			themeToggle.addEventListener('click', function () {
 				const currentTheme = document.documentElement.dataset.theme === 'light' ? 'light' : 'dark';
@@ -3958,10 +3979,6 @@ function generateHTML() {
 				: [value];
 
 			inputList.value = batchMode.checked ? lines.join('\\n') : value;
-
-			if (!batchMode.checked) {
-				saveHistory(value);
-			}
 
 			resultsDiv.innerHTML = '';
 			resultIndex = 0;
@@ -4049,7 +4066,6 @@ function generateHTML() {
 			const presetDropdown = document.getElementById('presetDropdown');
 			const presetList = document.getElementById('presetList');
 			const presetSelectAll = document.getElementById('presetSelectAll');
-			const presetApplyBtn = document.getElementById('presetApplyBtn');
 
 			if (!inputBody || !presetList) return;
 
@@ -4060,6 +4076,35 @@ function generateHTML() {
 					inputList.value = '';
 					inputList.focus();
 				});
+			}
+
+			// 从输入框当前内容同步勾选状态到列表
+			function syncCheckboxesFromInput() {
+				const current = inputList.value.trim();
+				const existing = current ? current.split('\\n').map(function (l) { return l.trim(); }).filter(Boolean) : [];
+				presetList.querySelectorAll('input[type="checkbox"]').forEach(function (cb) {
+					cb.checked = existing.includes(cb.value);
+				});
+				const allChecked = Array.from(presetList.querySelectorAll('input[type="checkbox"]')).every(function (c) { return c.checked; });
+				presetSelectAll.checked = allChecked;
+				presetSelectAll.indeterminate = !allChecked && Array.from(presetList.querySelectorAll('input[type="checkbox"]')).some(function (c) { return c.checked; });
+			}
+
+			// 根据所有勾选状态重建输入框内容
+			function syncInputFromCheckboxes() {
+				const checked = Array.from(presetList.querySelectorAll('input[type="checkbox"]:checked')).map(function (cb) { return cb.value; });
+				// 保留输入框中非预设的自定义内容
+				const current = inputList.value.trim();
+				const existing = current ? current.split('\\n').map(function (l) { return l.trim(); }).filter(Boolean) : [];
+				const customLines = existing.filter(function (line) { return !PRESET_DOMAINS.includes(line); });
+				const merged = Array.from(new Set(customLines.concat(checked)));
+				inputList.value = merged.join('\\n');
+
+				// 如果有内容且不是批量模式则自动切换
+				if (merged.length > 1 && !batchMode.checked) {
+					batchMode.checked = true;
+					swapInputMode(true);
+				}
 			}
 
 			// 渲染列表
@@ -4076,7 +4121,9 @@ function generateHTML() {
 				item.appendChild(lbl);
 				presetList.appendChild(item);
 
+				// 勾选即生效：直接同步到输入框
 				cb.addEventListener('change', function () {
+					syncInputFromCheckboxes();
 					const allChecked = Array.from(presetList.querySelectorAll('input[type="checkbox"]')).every(function (c) { return c.checked; });
 					presetSelectAll.checked = allChecked;
 					presetSelectAll.indeterminate = !allChecked && Array.from(presetList.querySelectorAll('input[type="checkbox"]')).some(function (c) { return c.checked; });
@@ -4089,30 +4136,17 @@ function generateHTML() {
 					cb.checked = presetSelectAll.checked;
 				});
 				presetSelectAll.indeterminate = false;
+				syncInputFromCheckboxes();
 			});
 
-			// 展开/收起
+			// 展开/收起时同步勾选状态
 			presetToggleBtn.addEventListener('click', function (e) {
+				const willOpen = !inputBody.classList.contains('is-open');
 				inputBody.classList.toggle('is-open');
-				e.stopPropagation();
-			});
-
-			// 追加到输入框
-			presetApplyBtn.addEventListener('click', function () {
-				const checked = Array.from(presetList.querySelectorAll('input[type="checkbox"]:checked')).map(function (cb) { return cb.value; });
-				if (!checked.length) { return; }
-
-				const current = inputList.value.trim();
-				const existing = current ? current.split('\\n').map(function (l) { return l.trim(); }).filter(Boolean) : [];
-				const merged = Array.from(new Set(existing.concat(checked)));
-				inputList.value = merged.join('\\n');
-
-				// 如果不是批量模式则自动切换
-				if (!batchMode.checked) {
-					batchMode.checked = true;
-					swapInputMode(true);
+				if (willOpen) {
+					syncCheckboxesFromInput();
 				}
-				inputBody.classList.remove('is-open');
+				e.stopPropagation();
 			});
 
 			// 点击外部关闭
@@ -4123,8 +4157,64 @@ function generateHTML() {
 			});
 		})();
 
+		// ===== Finder 功能逻辑 =====
+		const proxyRegionSelect = document.getElementById('proxyRegionSelect');
+		const proxyPortSelect = document.getElementById('proxyPortSelect');
+		const customRegionField = document.getElementById('customRegionField');
+		const customRegionInput = document.getElementById('customRegionInput');
+		const fofaBtn = document.getElementById('fofaBtn');
+
+		function normalizeCustomRegionCode(value) {
+			return String(value || '').replace(/[^a-z]/gi, '').slice(0, 2).toUpperCase();
+		}
+
+		function updateCustomRegionField(shouldFocus) {
+			if (!proxyRegionSelect || !customRegionField || !customRegionInput) return;
+			const isCustom = proxyRegionSelect.value === 'custom';
+			const selectedRegion = /^[A-Z]{2}$/.test(proxyRegionSelect.value) ? proxyRegionSelect.value : '';
+			customRegionInput.disabled = !isCustom;
+			customRegionInput.required = isCustom;
+			customRegionInput.placeholder = isCustom ? 'US' : '';
+			if (isCustom) {
+				customRegionInput.value = normalizeCustomRegionCode(customRegionInput.value);
+				if (shouldFocus) setTimeout(() => customRegionInput.focus(), 0);
+			} else {
+				customRegionInput.value = selectedRegion;
+			}
+		}
+
+		function getSelectedFOFARegion() {
+			if (!proxyRegionSelect) return '';
+			if (proxyRegionSelect.value === 'custom') {
+				const region = normalizeCustomRegionCode(customRegionInput ? customRegionInput.value : '');
+				if (customRegionInput) customRegionInput.value = region;
+				if (!/^[A-Z]{2}$/.test(region)) {
+					showToast('请输入有效的两位国家代码', 'error');
+					return null;
+				}
+				return region;
+			}
+			return /^[A-Z]{2}$/.test(proxyRegionSelect.value) ? proxyRegionSelect.value : '';
+		}
+
+		function openFOFA() {
+			const region = getSelectedFOFARegion();
+			const port = proxyPortSelect ? proxyPortSelect.value : '';
+			if (region === null) return;
+			if (!region) { showToast('请选择有效地区', 'error'); return; }
+			let regionQuery = (region === 'HK' || region === 'TW' || region === 'MO') ? 'region="' + region + '"' : 'country="' + region + '"';
+			let portQuery = port === '443' ? 'port="443"' : '(port!="80" && port!="8080" && port!="8880" && port!="2052" && port!="2082" && port!="2086" && port!="2095" && port!="443" && port!="2053" && port!="2083" && port!="2087" && port!="2096" && port!="8443")';
+			const query = 'server=="cloudflare" && header="Forbidden" && asn!="13335" && asn!="209242" && ' + regionQuery + ' && ' + portQuery;
+			window.open('https://fofa.info/result?qbase64=' + btoa(query), '_blank', 'noopener');
+		}
+
+		if (proxyRegionSelect) {
+			proxyRegionSelect.addEventListener('change', () => updateCustomRegionField(true));
+			updateCustomRegionField(false);
+		}
+		if (fofaBtn) fofaBtn.addEventListener('click', openFOFA);
+
 		window.onload = function () {
-			renderHistory();
 			setModeVisuals(true);
 			swapInputMode(true);
 			bindInputShortcut();
