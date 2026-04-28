@@ -4043,10 +4043,10 @@ function generateHTML() {
             'ProxyIP.HK.CMLiussss.net',
             'ProxyIP.SG.CMLiussss.net',			
             'ProxyIP.JP.CMLiussss.net',
+			'ProxyIP.US.CMLiussss.net',			
 			'ProxyIP.Oracle.cmliussss.net',  
 			'ProxyIP.Multacom.CMLiussss.net', 
 			'ProxyIP.Vultr.CMLiussss.net',
-			'ProxyIP.US.CMLiussss.net',
 			'proxyip.wangqifei.eu.org',   
 			'sjc.o00o.ooo',  
 			'bpb.yousef.isegaro.com',
@@ -4057,6 +4057,8 @@ function generateHTML() {
 			'proxyip.vultr.fxxk.dedyn.io',
 			'proxyip.digitalocean.hw.090227.xyz',
 			'proxy.xinyitang.dpdns.org',
+			'kr.william.us.ci',
+			'tw.william.us.ci',
 			'proxyip.fxxk.dedyn.io'
 		];
 
