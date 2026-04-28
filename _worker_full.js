@@ -559,10 +559,16 @@ function generateHTML() {
 			z-index: 5;
 		}
 
-		.panel-header,
-		.results-header {
+		.panel-header {
 			display: flex;
 			justify-content: flex-start;
+			align-items: baseline;
+			gap: 20px;
+		}
+
+		.results-header {
+			display: flex;
+			justify-content: space-between;
 			align-items: baseline;
 			gap: 20px;
 		}
