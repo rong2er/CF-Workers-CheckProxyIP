@@ -1014,6 +1014,202 @@ function generateHTML() {
 			display: grid;
 			gap: 16px;
 		}
+		.results-filters[hidden],
+		.filter-panel[hidden],
+		.export-toast[hidden],
+		.filter-empty[hidden] {
+			display: none;
+		}
+
+		.results-filters {
+			display: grid;
+			gap: 12px;
+			margin-top: 22px;
+			margin-bottom: 18px;
+		}
+
+		.filter-toggle {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 12px;
+			width: 100%;
+			min-height: 44px;
+			padding: 10px 14px;
+			border-radius: 18px;
+			border: 1px solid rgba(255, 255, 255, 0.1);
+			background: rgba(255, 255, 255, 0.04);
+			color: var(--text-soft);
+			font-weight: 800;
+			cursor: pointer;
+			text-align: left;
+		}
+
+		.filter-toggle:hover {
+			border-color: rgba(97, 219, 255, 0.28);
+			background: rgba(97, 219, 255, 0.08);
+			color: #ffffff;
+		}
+
+		.filter-toggle-icon {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			width: 18px;
+			height: 18px;
+			flex: none;
+		}
+
+		.filter-toggle-icon svg {
+			display: block;
+			width: 12px;
+			height: 12px;
+			overflow: visible;
+			transform-origin: 50% 50%;
+			transition: transform 0.2s ease;
+		}
+
+		.filter-toggle[aria-expanded='true'] .filter-toggle-icon svg {
+			transform: rotate(180deg);
+		}
+
+		.filter-panel {
+			display: grid;
+			gap: 12px;
+		}
+
+		.filter-row {
+			display: grid;
+			grid-template-columns: max-content minmax(0, 1fr);
+			gap: 10px;
+			align-items: start;
+		}
+
+		.filter-row-label {
+			color: var(--muted);
+			font-size: 0.84rem;
+			font-weight: 700;
+			letter-spacing: 0.04em;
+			line-height: 40px;
+			white-space: nowrap;
+		}
+
+		.filter-options {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 10px;
+			min-width: 0;
+		}
+
+		.filter-chip {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			min-height: 40px;
+			padding: 9px 14px;
+			border-radius: 999px;
+			border: 1px solid rgba(255, 255, 255, 0.1);
+			background: rgba(255, 255, 255, 0.04);
+			color: var(--text-soft);
+			font-size: 0.86rem;
+			font-weight: 700;
+			white-space: nowrap;
+			cursor: pointer;
+		}
+
+		.filter-chip:hover {
+			border-color: rgba(97, 219, 255, 0.28);
+			background: rgba(97, 219, 255, 0.1);
+			color: #ffffff;
+		}
+
+		.filter-chip.is-active {
+			border-color: rgba(97, 219, 255, 0.46);
+			background: linear-gradient(135deg, rgba(97, 219, 255, 0.22), rgba(52, 211, 153, 0.14));
+			color: #ffffff;
+			box-shadow: inset 0 0 0 1px rgba(97, 219, 255, 0.12);
+		}
+
+		.export-chip {
+			border-color: rgba(251, 191, 36, 0.28);
+			background: linear-gradient(135deg, rgba(251, 191, 36, 0.18), rgba(255, 184, 105, 0.12));
+			color: #ffe7a7;
+		}
+
+		.export-chip:hover {
+			border-color: rgba(251, 191, 36, 0.48);
+			background: linear-gradient(135deg, rgba(251, 191, 36, 0.26), rgba(255, 184, 105, 0.18));
+			color: #fff4cf;
+		}
+
+		.filter-chip:disabled,
+		.filter-chip.is-disabled {
+			border-color: rgba(144, 180, 212, 0.1);
+			background: rgba(255, 255, 255, 0.025);
+			color: rgba(142, 166, 188, 0.46);
+			box-shadow: none;
+			cursor: not-allowed;
+			opacity: 0.72;
+			pointer-events: none;
+		}
+
+		.export-toast {
+			position: fixed;
+			left: 50%;
+			bottom: 28px;
+			z-index: 10000;
+			max-width: min(420px, calc(100vw - 32px));
+			padding: 12px 16px;
+			border-radius: 999px;
+			border: 1px solid rgba(97, 219, 255, 0.26);
+			background: rgba(5, 18, 32, 0.94);
+			box-shadow: 0 18px 44px rgba(0, 0, 0, 0.34);
+			color: #e8fbff;
+			font-size: 0.9rem;
+			font-weight: 800;
+			text-align: center;
+			transform: translate(-50%, 12px);
+			opacity: 0;
+			pointer-events: none;
+			transition: opacity 0.22s ease, transform 0.22s ease;
+		}
+
+		.export-toast.is-visible {
+			opacity: 1;
+			transform: translate(-50%, 0);
+		}
+
+		.export-toast.is-error {
+			border-color: rgba(251, 113, 133, 0.34);
+			color: #ffd1d8;
+		}
+
+		.filter-empty {
+			padding: 16px 18px;
+			margin-bottom: 18px;
+			border-radius: 18px;
+			border: 1px dashed rgba(144, 180, 212, 0.22);
+			background: rgba(255, 255, 255, 0.025);
+			color: var(--muted);
+			font-size: 0.92rem;
+			line-height: 1.7;
+		}
+
+		/* 停止按钮样式 */
+		.primary-btn.is-stop {
+			background: linear-gradient(135deg, #ef4444, #fb7185);
+			color: #fff7f7;
+			box-shadow: 0 18px 34px rgba(239, 68, 68, 0.28);
+		}
+
+		.primary-btn.is-stop small {
+			color: rgba(255, 247, 247, 0.78);
+		}
+
+		.primary-btn.is-stop:hover {
+			box-shadow: 0 24px 42px rgba(239, 68, 68, 0.34);
+		}
+
 
 		.results-controls {
 			display: flex;
@@ -2699,7 +2895,7 @@ function generateHTML() {
 					<div class="results-pill state-idle" id="resultPill">Idle</div>
 				</div>
 
-				<!-- 新增操作栏 -->
+				<!-- 操作栏：全选 + 排序 + 复制选中 -->
 				<div class="results-controls" id="resultsControls" style="display: none;">
 					<div class="control-group">
 						<button class="control-btn" id="selectAllBtn">
@@ -2710,19 +2906,52 @@ function generateHTML() {
 							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-3 3-3-3"></path><path d="m15 6-3-3-3 3"></path><path d="M12 3v18"></path></svg>
 							<span>排序: 默认</span>
 						</button>
-					</div>
-					<div class="filter-group">
-						<span class="filter-label">筛选:</span>
-						<div class="filter-pill active" data-max="999999">全部</div>
-						<div class="filter-pill" data-max="50">&lt; 50ms</div>
-						<div class="filter-pill" data-max="100">&lt; 100ms</div>
-						<div class="filter-pill" data-max="150">&lt; 150ms</div>
-						<div class="filter-pill" data-max="250">&lt; 250ms</div>
-						<button class="control-btn" id="copySelectedBtn" style="margin-left: 8px;">
+						<button class="control-btn" id="copySelectedBtn">
 							<span>复制选中</span>
 						</button>
 					</div>
 				</div>
+
+				<!-- 筛选面板（弹出式，含状态/地区/延迟/导出） -->
+				<div class="results-filters" id="resultsFilters" hidden>
+					<button class="filter-toggle" id="filterToggle" type="button" aria-expanded="false">
+						<span id="filterToggleText">筛选：全部结果</span>
+						<span class="filter-toggle-icon" aria-hidden="true">
+							<svg viewBox="0 0 12 12" fill="none">
+								<path d="M2.5 4.25L6 7.75L9.5 4.25" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+							</svg>
+						</span>
+					</button>
+					<div class="filter-panel" id="filterPanel" hidden>
+						<div class="filter-row">
+							<span class="filter-row-label">状态</span>
+							<div class="filter-options" id="primaryFilterGroup" aria-label="结果类型筛选"></div>
+						</div>
+						<div class="filter-row">
+							<span class="filter-row-label">地区</span>
+							<div class="filter-options" id="countryFilterGroup" aria-label="出口地区筛选"></div>
+						</div>
+						<div class="filter-row">
+							<span class="filter-row-label">延迟</span>
+							<div class="filter-options" id="latencyFilterGroup" aria-label="延迟筛选">
+								<button class="filter-chip is-active" type="button" data-latency-max="999999">全部</button>
+								<button class="filter-chip" type="button" data-latency-max="50">&lt; 50ms</button>
+								<button class="filter-chip" type="button" data-latency-max="100">&lt; 100ms</button>
+								<button class="filter-chip" type="button" data-latency-max="150">&lt; 150ms</button>
+								<button class="filter-chip" type="button" data-latency-max="250">&lt; 250ms</button>
+							</div>
+						</div>
+						<div class="filter-row">
+							<span class="filter-row-label">导出</span>
+							<div class="filter-options" id="exportGroup" aria-label="导出当前筛选结果">
+								<button class="filter-chip export-chip" type="button" data-export-format="clipboard">粘贴板</button>
+								<button class="filter-chip export-chip" type="button" data-export-format="txt">TXT文件</button>
+								<button class="filter-chip export-chip" type="button" data-export-format="csv">CSV文件</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="filter-empty" id="filterEmpty" hidden>当前筛选没有匹配的检测结果。</div>
 
 				<div class="results-empty" id="resultsEmpty">
 					<div class="empty-visual" aria-hidden="true">
@@ -2857,6 +3086,8 @@ function generateHTML() {
 		let successCount = 0;
 		let inputCount = 0;
 		let appState = 'idle';
+		let activeRun = null;
+		const CHECK_CONCURRENCY = 32;
 
 		function getStoredTheme() {
 			try {
@@ -3246,6 +3477,12 @@ function generateHTML() {
 				meta = '本轮检测已结束，点击落地 IP 可展开地图详情。';
 				pillText = 'Completed';
 				if (controls) controls.style.display = 'flex';
+			} else if (appState === 'stopped') {
+				headline = '检测已停止';
+				description = '已停止，有效 ' + successCount + ' / ' + completedCount + '。';
+				meta = '检测已手动中止，以下是已完成部分的结果。';
+				pillText = 'Stopped';
+				if (controls) controls.style.display = 'flex';
 			} else if (appState === 'empty') {
 				headline = '未解析到可检测目标';
 				description = '请检查域名、IP 或端口格式后重新尝试。';
@@ -3267,6 +3504,54 @@ function generateHTML() {
 			resultMeta.innerText = meta;
 			resultPill.innerText = pillText;
 			resultPill.className = 'results-pill state-' + appState;
+		}
+
+
+		function makeAbortError(message) {
+			const error = new Error(message || '检测已停止');
+			error.name = 'AbortError';
+			return error;
+		}
+
+		function isRunStopped(run) {
+			return !run || run.cancelled || run.controller.signal.aborted || activeRun !== run;
+		}
+
+		function throwIfRunStopped(run) {
+			if (isRunStopped(run)) throw makeAbortError();
+		}
+
+		function setCheckButtonRunning(isRunning) {
+			const label = checkBtn.querySelector('span');
+			const hint = checkBtn.querySelector('small');
+			checkBtn.disabled = false;
+			checkBtn.classList.toggle('is-stop', isRunning);
+			if (label) label.innerText = isRunning ? '停止检测' : '开始检测';
+			if (hint) hint.innerText = isRunning ? 'Stop' : 'Resolve + Check';
+		}
+
+		function stopActiveRun() {
+			if (!activeRun || isRunStopped(activeRun)) return;
+			activeRun.cancelled = true;
+			activeRun.controller.abort();
+			progressText.innerText = '正在停止检测...';
+			setAppState('stopped');
+		}
+
+		async function runWithConcurrency(items, limit, worker, run) {
+			let nextIndex = 0;
+			const workerCount = Math.min(Math.max(Number(limit) || 1, 1), items.length);
+			const runners = [];
+			async function runNext() {
+				while (nextIndex < items.length && !isRunStopped(run)) {
+					const currentIndex = nextIndex++;
+					await worker(items[currentIndex], currentIndex);
+				}
+			}
+			for (let i = 0; i < workerCount; i++) {
+				runners.push(runNext());
+			}
+			await Promise.all(runners);
 		}
 
 		let resultIndex = 0;
@@ -3617,7 +3902,7 @@ function generateHTML() {
 
 			resultsDiv.appendChild(div);
 
-			return {
+			const itemObj = {
 				el: div,
 				flag: div.querySelector('.result-flag-overlay'),
 				info: div.querySelector('.result-info'),
@@ -3628,13 +3913,15 @@ function generateHTML() {
 				footerTag: div.querySelector('.result-footer-tag'),
 				checkbox: div.querySelector('.result-checkbox')
 			};
+			createResultRecord(ip, itemObj);
+			return itemObj;
 		}
 
-		async function checkIP(target) {
+		async function checkIP(target, signal) {
 			const itemObj = addResultItem(target);
 
 			try {
-				const response = await fetch('https://api.090227.xyz/check?proxyip=' + encodeURIComponent(target));
+				const response = await fetch('https://api.090227.xyz/check?proxyip=' + encodeURIComponent(target), { signal: signal });
 				const data = await response.json();
 				completedCount++;
 
@@ -3644,6 +3931,11 @@ function generateHTML() {
 					const rawLatency = data.responseTime || 0;
 					const latencyText = formatLatency(rawLatency);
 					itemObj.el.dataset.latency = String(rawLatency);
+					if (itemObj.record) {
+						itemObj.record.status = 'success';
+						itemObj.record.latency = rawLatency;
+						itemObj.record.data = data;
+					}
 					
 					// 延迟分级
 					let latencyClass = 'latency-high';
@@ -3661,6 +3953,11 @@ function generateHTML() {
 						exitIps.push({ ip: data.probe_results.ipv6.exit.ip, exitData: data.probe_results.ipv6.exit });
 					}
 
+					if (itemObj.record) {
+						itemObj.record.countries = exitIps.map(function(e) {
+							return getExitCountryFilterKey(e.exitData);
+						}).filter(Boolean);
+					}
 					const locations = joinUniqueValues(exitIps.map(function (entry) {
 						return formatExitLocation(entry.exitData);
 					}), '地区未知');
@@ -3692,6 +3989,7 @@ function generateHTML() {
 
 					renderExitList(itemObj.exitList, exitIps);
 				} else {
+					if (itemObj.record) { itemObj.record.status = 'error'; itemObj.record.data = data; }
 					itemObj.el.className = 'result-item error';
 					itemObj.el.dataset.latency = '999999';
 					updateResultFlag(itemObj, '');
@@ -3708,6 +4006,7 @@ function generateHTML() {
 					itemObj.footerTag.innerHTML = '';
 				}
 			} catch (error) {
+				if (error.name === 'AbortError') return;
 				completedCount++;
 				itemObj.el.className = 'result-item error';
 				itemObj.el.dataset.latency = '999999';
@@ -3809,39 +4108,351 @@ function generateHTML() {
 			items.forEach(item => container.appendChild(item));
 		});
 
-		// 新增：筛选逻辑
-		let currentMaxLatency = 999999;
-		document.querySelectorAll('.filter-pill').forEach(pill => {
-			pill.addEventListener('click', function() {
-				document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
-				this.classList.add('active');
-				currentMaxLatency = parseInt(this.dataset.max);
-				applyCurrentFilter(true); // 传入 true 表示需要同步勾选状态
-			});
-		});
+		// ===== 筛选面板逻辑（状态+地区+延迟+导出） =====
+		const EXPORT_CSV_COLUMNS = [
+			{ header: 'IP', path: 'proxyIP' },
+			{ header: 'PORT', path: 'portRemote' },
+			{ header: 'IPV4_CONNECT_MS', path: 'probe_results.ipv4.connect_ms' },
+			{ header: 'IPV4_EXIT_IP', path: 'probe_results.ipv4.exit.ip' },
+			{ header: 'IPV4_EXIT_COLO', path: 'probe_results.ipv4.exit.colo' },
+			{ header: 'IPV4_EXIT_ASN', path: 'probe_results.ipv4.exit.asn' },
+			{ header: 'IPV4_EXIT_ORG', path: 'probe_results.ipv4.exit.asOrganization' },
+			{ header: 'IPV4_EXIT_COUNTRY', path: 'probe_results.ipv4.exit.country' },
+			{ header: 'IPV4_EXIT_CITY', path: 'probe_results.ipv4.exit.city' },
+			{ header: 'IPV6_CONNECT_MS', path: 'probe_results.ipv6.connect_ms' },
+			{ header: 'IPV6_EXIT_IP', path: 'probe_results.ipv6.exit.ip' },
+			{ header: 'IPV6_EXIT_COLO', path: 'probe_results.ipv6.exit.colo' },
+			{ header: 'IPV6_EXIT_ASN', path: 'probe_results.ipv6.exit.asn' },
+			{ header: 'IPV6_EXIT_ORG', path: 'probe_results.ipv6.exit.asOrganization' },
+			{ header: 'IPV6_EXIT_COUNTRY', path: 'probe_results.ipv6.exit.country' },
+			{ header: 'IPV6_EXIT_CITY', path: 'probe_results.ipv6.exit.city' }
+		];
 
-		function applyCurrentFilter(syncSelection = false) {
-			document.querySelectorAll('.result-item').forEach(item => {
-				const latency = parseInt(item.dataset.latency);
-				// 核心修改：如果延迟为 999999 (失败项)，则始终隐藏，不计入筛选范围
-				const isVisible = latency < 999999 && latency <= currentMaxLatency;
-				item.style.display = isVisible ? 'flex' : 'none';
-				
-				// 如果点击了筛选按钮，则自动同步勾选状态
-				if (syncSelection) {
-					const cb = item.querySelector('.result-checkbox');
-					if (cb) cb.checked = isVisible;
-				}
+		let resultRecords = [];
+		let activePrimaryFilter = 'all';
+		let activeCountryFilter = 'all';
+		let activeLatencyMax = 999999;
+		let isFilterPanelExpanded = false;
+		let exportToastTimer = null;
+
+		const PRIMARY_RESULT_FILTERS = [
+			{ key: 'all', label: '全部' },
+			{ key: 'success', label: '有效' },
+			{ key: 'failed', label: '失败' }
+		];
+
+		function resetResultFilters() {
+			resultRecords = [];
+			activePrimaryFilter = 'all';
+			activeCountryFilter = 'all';
+			activeLatencyMax = 999999;
+			isFilterPanelExpanded = false;
+			document.querySelectorAll('#latencyFilterGroup .filter-chip').forEach(function(c) {
+				c.classList.toggle('is-active', c.dataset.latencyMax === '999999');
 			});
-			
-			// 每次筛选后重置“全选”按钮的状态提示
+			updateResultFilters();
+		}
+
+		function createResultRecord(target, itemObj) {
+			const record = {
+				target: target,
+				el: itemObj.el,
+				status: 'pending',
+				countries: [],
+				data: null,
+				latency: 999999
+			};
+			resultRecords.push(record);
+			itemObj.record = record;
+			return record;
+		}
+
+		function getExitCountryFilterKey(exitData) {
+			const candidates = [exitData?.country, exitData?.countryCode, exitData?.country_code];
+			for (const c of candidates) {
+				const n = String(c || '').trim().toUpperCase();
+				if (/^[A-Z]{2}$/.test(n)) return n;
+			}
+			return String(candidates[0] || '').trim().toUpperCase() || '';
+		}
+
+		function doesRecordMatchPrimaryFilter(record, filterKey) {
+			if (filterKey === 'success') return record.status === 'success';
+			if (filterKey === 'failed') return record.status === 'error';
+			return true;
+		}
+
+		function doesRecordMatchCountryFilter(record, countryKey) {
+			return countryKey === 'all' || record.countries.includes(countryKey);
+		}
+
+		function doesRecordMatchLatency(record, maxLatency) {
+			if (maxLatency >= 999999) return true;
+			return record.status === 'success' && record.latency <= maxLatency;
+		}
+
+		function getPrimaryFilteredRecords(filterKey) {
+			return resultRecords.filter(function(r) { return doesRecordMatchPrimaryFilter(r, filterKey); });
+		}
+
+		function getCountryFilterOptions(baseRecords) {
+			const countryCounts = new Map();
+			baseRecords.forEach(function(r) {
+				r.countries.forEach(function(c) {
+					countryCounts.set(c, (countryCounts.get(c) || 0) + 1);
+				});
+			});
+			const options = [{ key: 'all', label: '全部', count: baseRecords.length }];
+			Array.from(countryCounts.entries())
+				.sort(function(a, b) { return b[1] - a[1] || a[0].localeCompare(b[0]); })
+				.forEach(function(entry) { options.push({ key: entry[0], label: entry[0], count: entry[1] }); });
+			return options;
+		}
+
+		function renderFilterChip(attrName, key, label, count, isActive, isDisabled) {
+			const cls = 'filter-chip' + (isActive ? ' is-active' : '') + (isDisabled ? ' is-disabled' : '');
+			const dis = isDisabled ? ' disabled aria-disabled="true"' : '';
+			return '<button type="button" class="' + cls + '" data-' + attrName + '="' + escapeHtml(key) + '" aria-pressed="' + String(isActive) + '"' + dis + '>'
+				+ escapeHtml(label + '(' + count + ')') + '</button>';
+		}
+
+		function applyResultFilters() {
+			let visibleCount = 0;
+			resultRecords.forEach(function(record) {
+				const show = doesRecordMatchPrimaryFilter(record, activePrimaryFilter)
+					&& doesRecordMatchCountryFilter(record, activeCountryFilter)
+					&& doesRecordMatchLatency(record, activeLatencyMax);
+				record.el.hidden = !show;
+				record.el.style.display = show ? 'flex' : 'none';
+				if (show) visibleCount++;
+			});
+			return visibleCount;
+		}
+
+		function getFilterToggleLabel(visibleCount) {
+			const parts = [];
+			if (activePrimaryFilter !== 'all') {
+				const f = PRIMARY_RESULT_FILTERS.find(function(x) { return x.key === activePrimaryFilter; });
+				if (f) parts.push(f.label);
+			}
+			if (activeCountryFilter !== 'all') parts.push(activeCountryFilter);
+			if (activeLatencyMax < 999999) parts.push('< ' + activeLatencyMax + 'ms');
+			if (!parts.length) return '筛选：全部结果';
+			return '筛选：' + parts.join(' · ') + ' (' + visibleCount + ')';
+		}
+
+		function updateResultFilters() {
+			const resultsFilters = document.getElementById('resultsFilters');
+			const filterToggle = document.getElementById('filterToggle');
+			const filterPanel = document.getElementById('filterPanel');
+			const filterToggleText = document.getElementById('filterToggleText');
+			const primaryFilterGroup = document.getElementById('primaryFilterGroup');
+			const countryFilterGroup = document.getElementById('countryFilterGroup');
+			const filterEmpty = document.getElementById('filterEmpty');
+			if (!resultsFilters || !filterToggle) return;
+
+			if (!resultRecords.length) {
+				resultsFilters.hidden = true;
+				if (filterPanel) filterPanel.hidden = true;
+				if (filterEmpty) filterEmpty.hidden = true;
+				return;
+			}
+
+			resultsFilters.hidden = false;
+			if (primaryFilterGroup) {
+				primaryFilterGroup.innerHTML = PRIMARY_RESULT_FILTERS.map(function(f) {
+					const count = getPrimaryFilteredRecords(f.key).length;
+					return renderFilterChip('primary-filter', f.key, f.label, count, activePrimaryFilter === f.key, count === 0);
+				}).join('');
+			}
+
+			const baseRecords = getPrimaryFilteredRecords(activePrimaryFilter);
+			const countryOptions = getCountryFilterOptions(baseRecords);
+			if (activeCountryFilter !== 'all' && !countryOptions.some(function(o) { return o.key === activeCountryFilter; })) {
+				activeCountryFilter = 'all';
+			}
+			if (countryFilterGroup) {
+				countryFilterGroup.innerHTML = countryOptions.map(function(o) {
+					return renderFilterChip('country-filter', o.key, o.label, o.count, activeCountryFilter === o.key);
+				}).join('');
+			}
+
+			const visibleCount = applyResultFilters();
+			if (filterPanel) {
+				filterPanel.hidden = !isFilterPanelExpanded;
+				filterToggle.setAttribute('aria-expanded', String(isFilterPanelExpanded));
+			}
+			if (filterToggleText) filterToggleText.innerText = getFilterToggleLabel(visibleCount);
+			if (filterEmpty) filterEmpty.hidden = visibleCount !== 0;
+
 			const selectAllBtn = document.getElementById('selectAllBtn');
 			if (selectAllBtn) {
 				isAllSelected = false;
-				selectAllBtn.querySelector('span').innerText = '全选';
+				const span = selectAllBtn.querySelector('span');
+				if (span) span.innerText = '全选';
 			}
 		}
 
+		// 延迟筛选 chip 点击
+		document.addEventListener('click', function(e) {
+			const chip = e.target.closest('[data-latency-max]');
+			if (!chip) return;
+			activeLatencyMax = parseInt(chip.dataset.latencyMax);
+			document.querySelectorAll('#latencyFilterGroup .filter-chip').forEach(function(c) {
+				c.classList.toggle('is-active', c === chip);
+			});
+			updateResultFilters();
+		});
+
+		// 筛选面板交互绑定（toggle / 状态 / 地区 / 导出）
+		document.addEventListener('click', function(e) {
+			const btn = e.target.closest('#filterToggle');
+			if (btn) { isFilterPanelExpanded = !isFilterPanelExpanded; updateResultFilters(); return; }
+
+			const pf = e.target.closest('[data-primary-filter]');
+			if (pf && !pf.disabled) {
+				activePrimaryFilter = pf.dataset.primaryFilter || 'all';
+				activeCountryFilter = 'all';
+				updateResultFilters(); return;
+			}
+
+			const cf = e.target.closest('[data-country-filter]');
+			if (cf) { activeCountryFilter = cf.dataset.countryFilter || 'all'; updateResultFilters(); return; }
+
+			const ef = e.target.closest('[data-export-format]');
+			if (ef) { handleExport(ef.dataset.exportFormat || ''); return; }
+		});
+
+		// 导出功能
+		function normalizeExportValue(v) {
+			if (v === undefined || v === null) return '';
+			return String(v).trim();
+		}
+
+		function getNestedExportValue(source, path) {
+			const parts = path.split('.');
+			let current = source;
+			for (const part of parts) {
+				if (current === undefined || current === null) return '';
+				current = current[part];
+			}
+			return normalizeExportValue(current);
+		}
+
+		function getCurrentFilteredRecords() {
+			return resultRecords.filter(function(r) {
+				return doesRecordMatchPrimaryFilter(r, activePrimaryFilter)
+					&& doesRecordMatchCountryFilter(r, activeCountryFilter)
+					&& doesRecordMatchLatency(r, activeLatencyMax);
+			});
+		}
+
+		function getExportableRecords() {
+			return getCurrentFilteredRecords().filter(function(r) { return r.status === 'success' && r.data; });
+		}
+
+		function buildTextExportLine(data) {
+			const proxyIP = normalizeExportValue(data?.proxyIP || data?.candidate);
+			const port = normalizeExportValue(data?.portRemote);
+			if (!proxyIP) return '';
+			const probe = data?.probe_results?.ipv4 || data?.probe_results?.ipv6;
+			const exit = probe?.exit || {};
+			const country = normalizeExportValue(exit.country);
+			const city = normalizeExportValue(exit.city);
+			const asn = normalizeExportValue(exit.asn);
+			const org = normalizeExportValue(exit.asOrganization);
+			const desc = [country, city, asn ? 'AS' + asn : '', org].filter(Boolean).join(' ');
+			return proxyIP + (port ? ':' + port : '') + (desc ? '#' + desc : '');
+		}
+
+		function escapeCsvValue(v) {
+			const t = normalizeExportValue(v);
+			if (!/[",\\r\\n]/.test(t)) return t;
+			return '"' + t.replace(/"/g, '""') + '"';
+		}
+
+		function buildCsvExport(records) {
+			const header = EXPORT_CSV_COLUMNS.map(function(c) { return escapeCsvValue(c.header); }).join(',');
+			const rows = records.map(function(r) {
+				return EXPORT_CSV_COLUMNS.map(function(c) { return escapeCsvValue(getNestedExportValue(r.data, c.path)); }).join(',');
+			});
+			return [header].concat(rows).join('\\n');
+		}
+
+		function downloadTextFile(content, filename, mimeType) {
+			const blob = new Blob([content], { type: mimeType + ';charset=utf-8' });
+			const url = URL.createObjectURL(blob);
+			const a = document.createElement('a');
+			a.href = url; a.download = filename; a.style.display = 'none';
+			document.body.appendChild(a); a.click(); a.remove();
+			setTimeout(function() { URL.revokeObjectURL(url); }, 1000);
+		}
+
+		async function writeTextToClipboard(text) {
+			if (navigator.clipboard && window.isSecureContext) {
+				await navigator.clipboard.writeText(text); return;
+			}
+			const ta = document.createElement('textarea');
+			ta.value = text; ta.style.position = 'fixed'; ta.style.top = '-9999px';
+			document.body.appendChild(ta); ta.select();
+			const ok = document.execCommand('copy');
+			ta.remove();
+			if (!ok) throw new Error('Copy failed');
+		}
+
+		function showExportToast(message, tone) {
+			let toast = document.getElementById('exportToast');
+			if (!toast) {
+				toast = document.createElement('div');
+				toast.id = 'exportToast';
+				toast.className = 'export-toast';
+				toast.setAttribute('role', 'status');
+				toast.setAttribute('aria-live', 'polite');
+				document.body.appendChild(toast);
+			}
+			toast.hidden = false;
+			toast.innerText = message;
+			toast.className = tone === 'error' ? 'export-toast is-error is-visible' : 'export-toast is-visible';
+			clearTimeout(exportToastTimer);
+			exportToastTimer = setTimeout(function() {
+				toast.classList.remove('is-visible');
+				setTimeout(function() { toast.hidden = true; }, 240);
+			}, 2400);
+		}
+
+		async function handleExport(format) {
+			const records = getExportableRecords();
+			if (!records.length) { showExportToast('当前筛选没有可导出的有效结果', 'error'); return; }
+			try {
+				if (format === 'csv') {
+					downloadTextFile('\ufeff' + buildCsvExport(records), '结果.csv', 'text/csv');
+					showExportToast('已开始下载 CSV 文件'); return;
+				}
+				const textContent = records.map(function(r) { return buildTextExportLine(r.data); }).filter(Boolean).join('\\n');
+				if (!textContent) { showExportToast('没有可导出的内容', 'error'); return; }
+				if (format === 'clipboard') {
+					await writeTextToClipboard(textContent);
+					showExportToast('已将结果导出到粘贴板'); return;
+				}
+				if (format === 'txt') {
+					downloadTextFile(textContent, '结果.txt', 'text/plain');
+					showExportToast('已开始下载 TXT 文件');
+				}
+			} catch(err) {
+				console.error('Export failed', err);
+				showExportToast(format === 'clipboard' ? '粘贴板写入失败' : '导出失败', 'error');
+			}
+		}
+
+		function applyCurrentFilter(syncSelection) {
+			updateResultFilters();
+			if (syncSelection) {
+				document.querySelectorAll('.result-item').forEach(function(item) {
+					const cb = item.querySelector('.result-checkbox');
+					if (cb) cb.checked = item.style.display !== 'none';
+				});
+			}
+		}
 		async function showDetails(button, exitData) {
 			const item = button.closest('.result-item');
 			const container = item.querySelector('.map-container-wrapper');
@@ -3977,6 +4588,12 @@ function generateHTML() {
 		}
 
 		checkBtn.addEventListener('click', async function () {
+			// 若正在运行则停止
+			if (appState === 'running' || appState === 'resolving') {
+				stopActiveRun();
+				return;
+			}
+
 			const value = batchMode.checked ? normalizeBatchInputValue(inputList.value) : stripTargetLabel(inputList.value);
 			if (!value) return;
 
@@ -3997,48 +4614,64 @@ function generateHTML() {
 			totalTargets = 0;
 			inputCount = lines.length;
 
-			checkBtn.disabled = true;
+			resetResultFilters();
+
+			const run = { cancelled: false, controller: new AbortController() };
+			activeRun = run;
+			setCheckButtonRunning(true);
 			setAppState('resolving');
 
 			try {
 				const allResolvedTargets = [];
 
 				for (const line of lines) {
+					if (isRunStopped(run)) break;
 					try {
-						const response = await fetch('/resolve?proxyip=' + encodeURIComponent(line));
+						const response = await fetch('/resolve?proxyip=' + encodeURIComponent(line), { signal: run.controller.signal });
 						const targets = await response.json();
 						if (Array.isArray(targets)) {
 							allResolvedTargets.push(...targets);
 						}
 					} catch (error) {
+						if (error.name === 'AbortError') break;
 						console.error('Resolve error for', line, error);
 					}
 				}
 
-				if (allResolvedTargets.length > 0) {
+				if (!isRunStopped(run) && allResolvedTargets.length > 0) {
 					totalTargets = allResolvedTargets.length;
 					setAppState('running');
 					updateProgress();
 
-					await Promise.all(allResolvedTargets.map(function (target) {
-						return checkIP(target);
-					}));
+					await runWithConcurrency(allResolvedTargets, CHECK_CONCURRENCY, async function(target) {
+						if (!isRunStopped(run)) await checkIP(target, run.controller.signal);
+					}, run);
 
-					const failCount = Math.max(totalTargets - successCount, 0);
-					progressText.innerText = '总计 ' + totalTargets + ' · 有效 ' + successCount + ' · 失败 ' + failCount;
-					setAppState('done');
-				} else {
+					if (isRunStopped(run)) {
+						const failCount = Math.max(totalTargets - successCount, 0);
+						progressText.innerText = '已停止 · 总计 ' + totalTargets + ' · 有效 ' + successCount + ' · 失败 ' + failCount;
+						setAppState('done');
+					} else {
+						const failCount = Math.max(totalTargets - successCount, 0);
+						progressText.innerText = '总计 ' + totalTargets + ' · 有效 ' + successCount + ' · 失败 ' + failCount;
+						setAppState('done');
+					}
+				} else if (!isRunStopped(run)) {
 					progressText.innerText = '未解析到目标';
 					showEmptyState('没有可检测的候选目标', '请检查输入格式，或确认域名是否存在 A / AAAA 记录。');
 					setAppState('empty');
 				}
 			} catch (error) {
-				console.error(error);
-				progressText.innerText = '系统错误';
-				showEmptyState('检测流程中断', '请求过程中发生异常，请稍后重试。');
-				setAppState('error');
+				if (error.name !== 'AbortError') {
+					console.error(error);
+					progressText.innerText = '系统错误';
+					showEmptyState('检测流程中断', '请求过程中发生异常，请稍后重试。');
+					setAppState('error');
+				}
 			} finally {
-				checkBtn.disabled = false;
+				setCheckButtonRunning(false);
+				if (activeRun === run) activeRun = null;
+				updateResultFilters();
 			}
 		});
 
